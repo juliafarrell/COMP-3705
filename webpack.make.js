@@ -121,7 +121,7 @@ module.exports = function makeWebpackConfig(options) {
             // keep `/*@ngInject*/`
             return /@ngInject/.test(commentContents);
         }
-    }
+    };
 
     // Initialize module
     config.module = {
@@ -264,7 +264,7 @@ module.exports = function makeWebpackConfig(options) {
             template: 'client/_index.html',
             filename: '../client/index.html',
             alwaysWriteToDisk: true
-        }
+        };
         config.plugins.push(
           new HtmlWebpackPlugin(htmlConfig),
           new HtmlWebpackHarddiskPlugin()
