@@ -1,26 +1,30 @@
 
 import uuidv4 from 'uuid/v4';
 
-let users = [];
+let users = [{
+  id: 'test',
+  name: 'testName',
+  address: 'testAddress',
+  age: 'testAge'
+}];
 
 export function listContents(req, res) {
   return res.json(users);
 }
 
 export function findOne(req, res) {
-  let findThis = req.params.id;
-  if(users.length == 0)
-  {
+  if(users.length == 0) {
     res.status(404);
-    res.json({message: 'users array empty'});
+    return res.json({message: 'user array is empty'});
   }
+  let me = req.params.id;
   for(var i = 0; i < users.length; i++) {
-    if(users[i].id == findThis) {
+    if(users[i].id == me) {
       return res.json(users[i]);
     }
-    // if not, return 404
+      // if not, return 404
     res.status(404);
-    res.json({message: 'Not found beach'});
+    return res.json({message: 'Not found beach'});
   }
 }
 
@@ -34,4 +38,41 @@ export function createUser(req, res) {
   users.push(newUser);
   res.status(201);
   return res.json(newUser);
+}
+
+
+export function updateUser(req, res) {
+  let me = req.params.id;
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].id == me) {
+      users[i].id = me;
+      users[i].name = req.body.name;
+      users[i].address = req.body.address;
+      users[i].age = req.body.age;
+      res.status(200);
+      return res.json(users[i]);
+    }
+  }
+  let newUser = {
+    id: me,
+    name: req.body.name,
+    address: req.body.address,
+    age: req.body.age
+  };
+  users.push(newUser);
+  res.status(201);
+  return res.json(newUser);
+}
+
+export function removeUser(req, res) {
+  let me = req.params.id;
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].id == me) {
+      users.splice(me, 1);
+      res.status(204);
+      return res.json({message: 'hello?'});
+    }
+  }
+  res.status(404);
+  return res.json({message: 'Not found'});
 }
