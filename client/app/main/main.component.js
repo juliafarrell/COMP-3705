@@ -5,6 +5,7 @@ import routing from './main.routes';
 export class MainController {
   /*@ngInject*/
   constructor($http) {
+    this.values = ['first', 'second', 'third'];
     this.$http = $http;
   }
 
@@ -16,6 +17,7 @@ export default angular.module('comp3705App.main', [ngRoute])
   .config(routing)
   .component('main', {
     template: require('./main.html'),
-    controller: MainController
+    controller: MainController,
+    controllerAs: 'mainController'
   })
   .name;
