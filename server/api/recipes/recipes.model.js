@@ -13,8 +13,7 @@ let ingredientSchema = Schema({
 });
 
 let reviewSchema = Schema({
-  user: {type: Schema.Types.ObjectId, ref: 'User'},
-  recipe: {type: Schema.Types.ObjectId, ref: 'Recipe'},
+  user: {type: Schema.Types.ObjectId, ref: 'Users'},
   description: String,
   numStars: Number,
   created: Date
@@ -29,18 +28,11 @@ let recipeSchema = Schema({
   cookTime: Number,
   directions: [String],
   ingredients: [ingredientSchema],
-  reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}]
+  reviews: [reviewSchema]
 });
 
-/*
- This section creates interactive models from the defined schemas
- above so that you can perform Create Read Update and Delete (CRUD)
- operations against the schemas.
- NOTE since the nameSchema is embedded within userSchema, it does NOT have
- to be created as a model!
- */
-let Recipe = mongoose.model('Recipe', recipeSchema);
-let Review = mongoose.model('Review', reviewSchema);
+
+let Recipes = mongoose.model('Recipes', recipeSchema);
 
 // Export the two created models, Address and User
-export {Recipe, Review};
+export {Recipes};

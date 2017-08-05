@@ -1,16 +1,10 @@
 'use strict';
 
-import {Address, User} from './users.model';
+import {Recipies, Reviews} from './recipes.model';
 
-// Find all Users
+// Find all Recipies
 export function index(req, res) {
-   /*
-    The pattern you see below where one function is
-    called right after the other is called method chaining,
-    and is a common practice in JavaScript and many other languages
-    https://en.wikipedia.org/wiki/Method_chaining
-    */
-  User.find()
+  Recipies.find()
    /*
     For each user object, populate the address attribute.
     This will make all the attributes available in the address
