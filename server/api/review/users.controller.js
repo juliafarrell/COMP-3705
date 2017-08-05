@@ -4,12 +4,6 @@ import {Address, User} from './users.model';
 
 // Find all Users
 export function index(req, res) {
-   /*
-    The pattern you see below where one function is
-    called right after the other is called method chaining,
-    and is a common practice in JavaScript and many other languages
-    https://en.wikipedia.org/wiki/Method_chaining
-    */
   User.find()
    /*
     For each user object, populate the address attribute.

@@ -6,11 +6,12 @@
 
 import errors from './components/errors';
 import path from 'path';
-import * as users from './api/users';
+import * as user from './api/user';
+import * as recipe from './api/recipe';
 
 export default function(app) {
-  app.use('/api/users', users.router);
-
+  app.use('/api/users', user.router);
+  app.use('/api/recipe', recipe.router);
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
