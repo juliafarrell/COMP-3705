@@ -15,6 +15,13 @@ export function UserService($resource) {
           update: {method: 'PUT'}
         });
       return updateResource.update({id: user._id}, user);
+    },
+    createUser(user) {
+      let createResource = $resource('/api/users/', null,
+        {
+          create: {method: 'POST'}
+        });
+      return createResource.create(user);
     }
   };
   return User;

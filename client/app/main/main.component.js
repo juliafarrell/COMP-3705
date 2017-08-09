@@ -37,6 +37,17 @@ export class MainController {
     });
     console.log(user);
   }
+
+  createUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/createUserModal/createUserModal.html'),
+      controller: 'createUserController as createUserController',
+      resolve: {
+        user: () => user
+      }
+    });
+    console.log(user);
+  }
 }
 
 export function SquareFilter() {
