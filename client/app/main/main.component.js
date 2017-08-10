@@ -10,6 +10,10 @@ export class MainController {
     this.User = User;
     this.setData();
     this.getUserData();
+    this.alerts = [
+        { type: 'danger', msg: 'RAWR.' },
+        { type: 'success', msg: 'Woof' }
+    ];
   }
 
   setData() {
@@ -48,6 +52,14 @@ export class MainController {
     });
     console.log(user);
   }
+
+  addAlert = function(message) {
+    this.alerts.push({msg: message});
+  };
+
+  closeAlert = function(index) {
+    this.alerts.splice(index, 1);
+  };
 }
 
 export function SquareFilter() {

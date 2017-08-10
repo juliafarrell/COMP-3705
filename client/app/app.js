@@ -22,11 +22,10 @@ import util from '../components/util/util.module';
 import userService from '../components/userService/user.module';
 import updateUserModal from '../components/updateUserModal/updateUserModal.controller';
 import createUserModal from '../components/createUserModal/createUserModal.controller';
-import alert from '../components/alert/alert';
 import './app.css';
 
 angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap,
-   main, about, user, constants, util, userService, updateUserModal, createUserModal, alert
+   main, about, user, constants, util, userService, updateUserModal, createUserModal
 ])
   .config(routeConfig);
 
