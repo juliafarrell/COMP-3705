@@ -1,3 +1,5 @@
+const uiBootstrap = require('angular-ui-bootstrap');
+import user from '../../components/userService/user.module';
 import angular from 'angular';
 const ngRoute = require('angular-route');
 import routing from './main.routes';
@@ -16,6 +18,10 @@ export class MainController {
     ];
   }
 
+  $onInit() {
+
+  }
+
   setData() {
     this.values = ['first', 'second', 'third'];
     this.valueToSquare = 4;
@@ -31,26 +37,26 @@ export class MainController {
          });
   }
 
-  updateUser(user) {
+  updateUser(userA) {
     this.$uibModal.open({
       template: require('../../components/updateUserModal/updateUserModal.html'),
       controller: 'updateUserController as updateUserController',
       resolve: {
-        user: () => user
+        user: () => userA
       }
     });
-    console.log(user);
+    console.log(userA);
   }
 
-  createUser(user) {
+  createUser(userA) {
     this.$uibModal.open({
       template: require('../../components/createUserModal/createUserModal.html'),
       controller: 'createUserController as createUserController',
       resolve: {
-        user: () => user
+        user: () => userA
       }
     });
-    console.log(user);
+    console.log(userA);
   }
 
   addAlert = function(message) {
@@ -69,7 +75,7 @@ export function SquareFilter() {
   return squareFunction;
 }
 
-export default angular.module('comp3705App.main', [ngRoute])
+export default angular.module('comp3705App.main', [ngRoute, uiBootstrap, user])
   .config(routing)
   .component('main', {
     template: require('./main.html'),
