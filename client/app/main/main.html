@@ -19,24 +19,16 @@
        <table class="table table-responsive table-striped table-bordered">
           <thead>
           <tr>
-             <th class="col-xs-2">Recipe name</th>
-             <th class="col-xs-1">Prep Time</th>
-             <th class="col-xs-1">Cook Time</th>
-             <th class="col-sm-1 hidden-xs">Picture</th>
+             <th class="col-xs-3">Recipe name</th>
+             <th class="col-xs-3">Prep Time</th>
+             <th class="col-xs-3">Cook Time</th>
           </tr>
           </thead>
           <tbody>
-          <tr ng-repeat="user in mainController.users">
-             <td class="col-xs-2"><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>
-             <td class="col-xs-1">{{user.age}}</td>
-             <td class="col-xs-1">{{user.name.firstName}}</td>
-             <td class="col-sm-1 hidden-xs">{{user.name.middleName}}</td>
-             <td class="col-xs-1">{{user.name.lastName}}</td>
-             <td class="col-sm-1 hidden-xs">{{user.address.addressLine1}}</td>
-             <td class="col-sm-1 hidden-xs">{{user.address.addressLine2}}</td>
-             <td class="col-sm-1 hidden-xs">{{user.address.city}}</td>
-             <td class="col-sm-1 hidden-xs">{{user.address.state}}</td>
-             <td class="col-sm-1 hidden-xs">{{user.address.zip}}</td>
+          <tr ng-repeat="recipe in mainController.recipes">
+             <td class="col-xs-3"><button ng-click="mainController.updateRecipe(recipe)" type="button" class="btn btn-default">{{recipe.name}}</button></td>
+             <td class="col-xs-3">{{recipe.prepTime}}</td>
+             <td class="col-sm-3">{{recipe.cookTime}}</td>
           </tr>
           </tbody>
        </table>

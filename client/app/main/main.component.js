@@ -10,6 +10,7 @@ export class MainController {
     this.User = User;
     this.Recipe = Recipe;
     this.getUserData();
+    this.getRecipeData();
   }
 
   getUserData() {
@@ -44,6 +45,16 @@ export class MainController {
     console.log(user);
   }
 
+  getRecipeData() {
+    this.Recipe.getAllRecipes()
+         .then(response => {
+           this.recipes = response;
+         })
+         .catch(error => {
+           console.error(error);
+         });
+  }
+
   createRecipe(recipe) {
     this.$uibModal.open({
       template: require('../../components/createRecipeModal/createRecipeModal.html'),
@@ -52,6 +63,11 @@ export class MainController {
         recipe: () => recipe
       }
     });
+    console.log(recipe);
+  }
+
+  updateRecipe(recipe) {
+     // TODO: implement this as a modal
     console.log(recipe);
   }
 }

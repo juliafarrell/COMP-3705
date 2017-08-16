@@ -4,8 +4,9 @@ import routing from './recipes.routes';
 
 export class RecipeController {
    /*@ngInject*/
-  constructor($routeParams) {
+  constructor($routeParams, Recipe) {
     this.$routeParams = $routeParams;
+    this.Recipe = Recipe;
   }
 }
 

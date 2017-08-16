@@ -13,6 +13,8 @@ export class CreateRecipeController {
   }
 
   submitForm() {
+    this.recipe.ingredients = ['none yet'];
+    this.recipe.directions = ['none yet'];
     this.Recipe.createRecipe(this.recipe);
     this.$uibModalInstance.dismiss('submit');
   }
