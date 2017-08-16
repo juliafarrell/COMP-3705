@@ -4,21 +4,12 @@ import routing from './main.routes';
 
 export class MainController {
    /*@ngInject*/
-  constructor($http, $uibModal, User) {
+  constructor($http, $uibModal, User, Recipe) {
     this.$http = $http;
     this.$uibModal = $uibModal;
     this.User = User;
-    this.setData();
+    this.Recipe = Recipe;
     this.getUserData();
-    this.alerts = [
-        { type: 'danger', msg: 'RAWR.' },
-        { type: 'success', msg: 'Woof' }
-    ];
-  }
-
-  setData() {
-    this.values = ['first', 'second', 'third'];
-    this.valueToSquare = 4;
   }
 
   getUserData() {
@@ -53,20 +44,16 @@ export class MainController {
     console.log(user);
   }
 
-  addAlert = function(message) {
-    this.alerts.push({msg: message});
-  };
-
-  closeAlert = function(index) {
-    this.alerts.splice(index, 1);
-  };
-}
-
-export function SquareFilter() {
-  var squareFunction = function(value) {
-    return value * value;
-  };
-  return squareFunction;
+  createRecipe(recipe) {
+    this.$uibModal.open({
+      template: require('../../components/createRecipeModal/createRecipeModal.html'),
+      controller: 'createRecipeController as createRecipeController',
+      resolve: {
+        recipe: () => recipe
+      }
+    });
+    console.log(recipe);
+  }
 }
 
 export default angular.module('comp3705App.main', [ngRoute])
@@ -76,5 +63,4 @@ export default angular.module('comp3705App.main', [ngRoute])
     controller: MainController,
     controllerAs: 'mainController'
   })
-  .filter('Square', SquareFilter)
   .name;
