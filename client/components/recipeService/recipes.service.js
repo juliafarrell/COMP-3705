@@ -22,6 +22,13 @@ export function RecipeService($resource) {
           create: {method: 'POST'}
         });
       return createResource.create(recipe);
+    },
+    deleteRecipe(recipe) {
+      let deleteResource = $resource('/api/recipes/:id', null,
+        {
+          delete: {method: 'DELETE'}
+        });
+      return deleteResource.delete(recipe);
     }
   };
   return Recipe;

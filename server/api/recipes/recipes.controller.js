@@ -89,7 +89,7 @@ export function createReview(req, res) {
       createdReview = savedReview;
       return recipeToUpdate.save();
     })
-    .then(function(savedRecipe) {
+    .then(function() {
       res.status(201);
       res.json(createdReview);
     })
@@ -158,7 +158,7 @@ export function updateReview(req, res) {
         return Promise.reject(new Error('Review not found'));
       }
     })
-    .then(function(updateStatus) {
+    .then(function() {
       // update method does not return updated object, query for it here to return from API
       return Review.findById(req.params.reviewId);
     })
@@ -192,7 +192,7 @@ export function destroy(req, res) {
         return Promise.reject(new Error('Review not found'));
       }
     })
-    .then(function(deletedUser) {
+    .then(function() {
       res.status(204).send();
     })
     .catch(function(err) {
@@ -218,7 +218,7 @@ export function destroyReview(req, res) {
           return Promise.all([
             existingRecipe.save(),
             Review.findByIdAndRemove(req.params.reviewId)
-          ])
+          ]);
         } else {
           return Promise.reject(new Error('Review not found in recipe'));
         }
@@ -226,7 +226,7 @@ export function destroyReview(req, res) {
         return Promise.reject(new Error('Recipe not found'));
       }
     })
-    .then(function(results) {
+    .then(function() {
       res.status(204).send();
     })
     .catch(function(err) {

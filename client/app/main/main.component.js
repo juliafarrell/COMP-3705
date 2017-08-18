@@ -67,8 +67,25 @@ export class MainController {
   }
 
   updateRecipe(recipe) {
-     // TODO: implement this as a modal
+    this.$uibModal.open({
+      template: require('../../components/updateRecipeModal/updateRecipeModal.html'),
+      controller: 'updateRecipeController as updateRecipeController',
+      resolve: {
+        recipe: () => recipe
+      }
+    });
     console.log(recipe);
+  }
+
+  deleteRecipe(recipe) {
+    this.$uibModal.open({
+      template: require('../../components/areYouSure/areYouSure.html'),
+      controller: 'areYouSureController as areYouSureController',
+      resolve: {
+        recipe: () => recipe
+      }
+    });
+    console.log('might delete ' + recipe.name);
   }
 }
 
