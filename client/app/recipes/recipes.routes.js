@@ -4,10 +4,10 @@ export default function routes($routeProvider) {
   'ngInject';
 
   $routeProvider.when('/recipes/:printMe', {
-    template: '<about></about>'
+    template: '<recipes></recipes>'
   });
 
   $routeProvider.when('/recipes/', {
-    template: '<about></about>'
+    template: '<recipes></recipes>'
   });
 }

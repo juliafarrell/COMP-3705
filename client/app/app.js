@@ -35,6 +35,7 @@ angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBoo
 ])
   .config(routeConfig);
 
+
 angular.element(document)
   .ready(() => {
     angular.bootstrap(document, ['comp3705App'], {
