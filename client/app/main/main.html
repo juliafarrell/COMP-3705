@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-lg-12">
        <hr>
-
        <!--TODO: make this a carousel!-->
        <div class="row" style="align-content: center; margin-top: 2em; margin-bottom: 3em">
           <div class="col-sm-2 col-lg-3"></div>
@@ -18,7 +17,6 @@
             <button ng-click="mainController.createRecipe(recipe)" type="button" class="btn btn-default">Create!</button>
           </div>
        </div>
-
        <hr>
        <div class="row">
           <h2>Recipes in list:</h2>
@@ -26,19 +24,17 @@
              <thead>
              <tr>
                 <th class="col-xs-3">Recipe name</th>
-                <th class="col-xs-2">Prep Time</th>
-                <th class="col-xs-2">Cook Time</th>
-                <th class="col-xs-2">See recipe</th>
-                <th class="col-xs-2">Delete :(</th>
+                <th class="col-xs-3">Prep Time</th>
+                <th class="col-xs-3">Cook Time</th>
+                <th class="col-xs-3">Delete :(</th>
              </tr>
              </thead>
              <tbody>
              <tr ng-repeat="recipe in mainController.recipes">
                 <td class="col-xs-3"><button ng-click="mainController.updateRecipe(recipe)" type="button" class="btn btn-default">{{recipe.name}}</button></td>
-                <td class="col-xs-2">{{recipe.prepTime}}</td>
-                <td class="col-xs-2">{{recipe.cookTime}}</td>
-                <td class="col-xs-3"><button>link me</button></td>
-                <td class="col-xs-3"><button ng-click="mainController.deleteRecipe(recipe)" type="button" class="btn btn-default">delete</button></td>
+                <td class="col-xs-3">{{recipe.prepTime}}</td>
+                <td class="col-xs-3">{{recipe.cookTime}}</td>
+                <td class="col-xs-3"><button ng-click="mainController.deleteRecipe(rec)" type="button" class="btn btn-default">delete</button></td>
              </tr>
              </tbody>
           </table>

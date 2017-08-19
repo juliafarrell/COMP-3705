@@ -1,8 +1,30 @@
 <div class="container">
    <div class="row">
       <div class="col-lg-12">
-         <h1 class="page-header">COMP3705 Summer 2017</h1>
-         <h1>Recipe: {{ RecipeController.printMe }}</h1>
+         <h1 class="page-header">List of Recipes</h1>
+         <div class="row">
+            <h2>Recipes in list:</h2>
+            <table class="table table-responsive table-striped table-bordered">
+               <thead>
+               <tr>
+                  <th class="col-xs-3">Recipe name</th>
+                  <th class="col-xs-2">Prep Time</th>
+                  <th class="col-xs-2">Cook Time</th>
+                  <th class="col-xs-2">See recipe</th>
+                  <th class="col-xs-2">Delete :(</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr ng-repeat="rec in recipeController.recipes">
+                  <td class="col-xs-3"><button ng-click="recipeController.updateRecipe(rec)" type="button" class="btn btn-default">{{rec.name}}</button></td>
+                  <td class="col-xs-2">{{rec.prepTime}}</td>
+                  <td class="col-xs-2">{{rec.cookTime}}</td>
+                  <td class="col-xs-3"><button>link me</button></td>
+                  <td class="col-xs-3"><button ng-click="recipeController.deleteRecipe(rec)" type="button" class="btn btn-default">delete</button></td>
+               </tr>
+               </tbody>
+            </table>
+         </div>
       </div>
    </div>
 </div>
